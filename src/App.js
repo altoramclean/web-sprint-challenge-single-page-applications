@@ -34,14 +34,13 @@ export default function App(){
   const [disabled, setDisabled] = useState(initialDisabled)
 
   const postNewOrder = newOrder => {
-  
     axios.post(`https://reqres.in/api/orders`, newOrder)
       .then(res => {
-        setOrder([res.data, ...order])
+        setOrder([res.data, ...order]);
       }).catch(err => {
         console.error(err);
       }).finally(() => {
-        setFormValues(initialFormValues)
+        setFormValues(initialFormValues);
       })
   }
 
