@@ -135,7 +135,7 @@ return (
             checked={values.Chicken}
           />
         </label>
-        <button id='order-button' disabled={disabled}>Order your Pizza Now!</button>
+        <button disabled = {disabled} id = 'order-button'>Order your Pizza Now!</button>
 
     </div>
 </form>
