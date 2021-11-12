@@ -13,23 +13,28 @@ export default function Form(props){
         evt.preventDefault()
         submit()
     }
-const onChange = evt => {
-    const { name, value, checked, type } = evt.target;
-    const valueToUse = type === 'checkbox' ? checked : value;
-    change(name, valueToUse);
-}
+    const onChange = evt => {
+        let valueToUse = ''
+        const { name, value, checked, type } = evt.target;
+        console.log('1',name,'2',value ,'3',checked,'4',type)
+        type === 'checkbox'? valueToUse = true : valueToUse = value
+    
+        change(name, valueToUse);
+    }
 return (
     <form id ='pizza-form' onSubmit = {onSubmit}>
         <div className = 'form-submit'>
             <h2> Make A Pizza!</h2>
+
     <img src = 'https://www.exposedmagazine.co.uk/wp-content/uploads/2021/02/pizza-oven-2.jpg' alt='pizza in the oven'></img>
+
         <div className = 'errors'>
             <div>{errors.name}</div>
             <div>{errors.size}</div>
             <div>{errors.sauce}</div>
             <div>{errors.instructions}</div>
         </div>
-        </div>
+     </div>
 
 <div className = 'form-group inputs'>
     <label>Name
