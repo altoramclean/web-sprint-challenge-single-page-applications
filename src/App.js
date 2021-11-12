@@ -12,9 +12,10 @@ const initialFormValues = {
   instructions: '',
   size: '',
   sauce: '',
-  pepperoni:false,
+  Pepperoni:false,
   Chicken: false,
-  extraCheese: false,
+  Mushrooms: false,
+  ExtraCheese: false,
 }
 const initialFormErrors = {
   name: '',
@@ -64,12 +65,13 @@ const inputChange = (name, value) => {
       size:formValues.size.trim(),
       instructions:formValues.instructions.trim(),
       sauce: formValues.sauce.trim(),
-      toppings: [ 'pepperoni', 'chicken', 'extraCheese', 'mushrooms'].filter(topping => formValues[topping])
+      toppings: [ 'Pepperoni', 'Chicken', 'Mushrooms', 'ExtraCheese'].filter(topping => formValues[topping])
     }
   postNewOrder(newOrder)
   }
   
   useEffect(() => {
+    
     formSchema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
 
