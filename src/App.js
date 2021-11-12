@@ -1,4 +1,4 @@
-import React,{ useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import * as yup from 'yup';
 import axios from 'axios';
 import formSchema from './validation/formSchema.js';
@@ -12,16 +12,15 @@ const initialFormValues = {
   instructions: '',
   size: '',
   sauce: '',
-  Pepperoni:false,
-  Chicken: false,
+  Pepperoni: false,
   Mushrooms: false,
+  Chicken: false,
   ExtraCheese: false,
 }
 const initialFormErrors = {
   name: '',
   size:'',
   instructions:'',
-  sauce:'',
 }
 const initialOrders = []
 const initialDisabled = true
@@ -34,7 +33,8 @@ export default function App(){
   const [disabled, setDisabled] = useState(initialDisabled)
 
   const postNewOrder = newOrder => {
-    axios.post(`https://reqres.in/api/orders`, newOrder)
+
+    axios.post('https://reqres.in/api/orders' , newOrder)
       .then(res => {
         setOrder([res.data, ...order]);
       }).catch(err => {
@@ -51,14 +51,14 @@ export default function App(){
       .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
   }
 
-const inputChange = (name, value) => {
+const handleChange = (name, value) => {
     validate(name, value);
     setFormValues({
       ...formValues,
       [name]: value 
     })
   }
-  const formSubmit = () => {
+  const handleSubmit = () => {
     const newOrder = {
       name:formValues.name.trim(),
       size:formValues.size.trim(),
@@ -84,8 +84,8 @@ return (
    <Route path='/pizza'>
     <PizzaForm
     values={formValues}
-    change={inputChange}
-    submit={formSubmit}
+    change={handleChange}
+    submit={handleSubmit}
     disabled={disabled}
     errors={formErrors}
     />
